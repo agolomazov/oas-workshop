@@ -319,3 +319,9 @@ components:
       in: header
 x-stoplight:
   id: 4qqp6vkvdx7s7
+x-json-schema-faker:
+  locale: en
+  min-items: 2
+  max-items: 10
+  optionalsProbability: 0.5
+  resolve-json-path: true
