@@ -1,0 +1,42 @@
+{
+  "name": "agolomazov-openapi-workshop",
+  "version": "1.0.0",
+  "description": "Workshop по инструментам для работы с OpenAPI Specification",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "lint": "spectral lint ./reference/news-service.yaml --ruleset .spectral.yaml",
+    "openapi:gen1": "openapi-generator-cli generate -i ./reference/news-service.yaml -g typescript-axios -o codegen/mcbsdk --type-mappings=array=Array,set=Array,Error=ModelError -c openapi-gen-config.json",
+    "openapi:mysql": "openapi-generator-cli generate -i ./reference/news-service.yaml -g mysql-schema -o codegen/mysql-schema",
+    "openapi:csharp": "openapi-generator-cli generate -i ./reference/news-service.yaml -g csharp -o codegen/csharp",
+    "generate": "node generate-npm.js",
+    "mock": "prism mock -d ./reference/news-service.yaml",
+    "mock:petstore": "prism mock -d ./reference/petstore.json",
+    "openapi:gen": "openapi-generator-cli generate -i ./reference/news-service.yaml -g typescript-axios -o generated-src/openapi --type-mappings=array=Array,set=Array,Error=ModelError -c openapi-gen-config.json",
+    "openapi:only-models": "openapi-generator-cli generate --global-property models -i ./reference/news-service.yaml -g typescript-axios -o generated-src/openapi --type-mappings=array=Array,set=Array -c openapi-gen-config.json",
+    "merge-contracts": "openapi-merge-cli --config ./openapi-merge.json",
+    "mock:all": "prism mock -d ./reference/merge-service.yaml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agolomazov/openapi-workshop.git"
+  },
+  "keywords": [],
+  "author": "Anton Golomazov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agolomazov/openapi-workshop/issues"
+  },
+  "homepage": "https://github.com/agolomazov/openapi-workshop#readme",
+  "devDependencies": {
+    "@stoplight/prism-cli": "^4.10.5",
+    "@stoplight/spectral-cli": "^6.2.1",
+    "create-ts-index": "^1.14.0",
+    "mustache": "^4.2.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "@openapitools/openapi-generator-cli": "^2.4.26",
+    "openapi-merge-cli": "^1.3.1"
+  }
+}

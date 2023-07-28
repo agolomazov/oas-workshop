@@ -1,0 +1,43 @@
+openapi: 3.0.0
+x-stoplight:
+  id: 4qqp6vkvdx7s7
+info:
+  title: todos-service
+  version: '1.0'
+  description: Сервис задач
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /todos:
+    post:
+      summary: Создание задачи
+      tags:
+        - todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Todo.yaml
+      operationId: createTodo
+      description: Создание задачи
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Todo.yaml
+    get:
+      summary: Получение списка задач
+      tags:
+        - todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/dto/TodoList.yaml
+      operationId: fetchTodos
+components:
+  schemas: {}

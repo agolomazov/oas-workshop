@@ -1,0 +1,11 @@
+{
+  "inputs": [
+    {
+      "inputFile": "./reference/todos-service.yaml"
+    },
+    {
+      "inputFile": "./reference/news-service.yaml"
+    }
+  ],
+  "output": "./reference/merge-service.yaml"
+}
